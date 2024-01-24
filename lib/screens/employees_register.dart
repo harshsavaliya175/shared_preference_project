@@ -78,6 +78,7 @@ class _EmployeesRegisterScreenState extends State<EmployeesRegisterScreen> {
                               PopupMenuButton(
                                 onSelected: (value) {
                                   if (value == RoutesConstants.employeeForm) {
+                                    employeesDataList[index]['id'] = index;
                                     Navigator.of(context).pushNamed(
                                       RoutesConstants.employeeForm,
                                       arguments: employeesDataList[index],

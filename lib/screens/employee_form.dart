@@ -96,14 +96,27 @@ class _EmployeeFormScreenState extends State<EmployeeFormScreen> {
     setState(() {});
   }
 
+  void editData() {
+    String employeeDataString =
+        PreferenceService.getString(PreferenceKey.employeesDetails);
+    // List employeeDataList =
+  }
+
+  bool isData = true;
+
   @override
   Widget build(BuildContext context) {
     final data = ModalRoute.of(context)!.settings.arguments as Map?;
-    if (data != null) {
+
+    if (data != null && isData) {
       nameController.text = data['name'];
       genderController.text = data['gender'];
+      male = (data['gender'] == 'male');
+      female = (data['gender'] == 'female');
       joiningDateController.text = data['joiningDate'];
       mobileController.text = data['mobileNumber'] ?? '';
+      checkGender = true;
+      isData = false;
     }
     return Scaffold(
       resizeToAvoidBottomInset: false,
